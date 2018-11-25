@@ -9,7 +9,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
-    @recipe = { message: 'Recipe details by id', recipe: @recipe }
+    @recipe = { message: 'Recipe details by id', recipe: [@recipe] }
     render json: response_fields(@recipe)
   end
 
@@ -32,7 +32,7 @@ class RecipesController < ApplicationController
   def update
     @recipe = Recipe.find(params[:id])
     if @recipe.update(recipe_params)
-      render json: response_fields({ message: 'Recipe successfully updated!', recipe: @recipe })
+      render json: response_fields({ message: 'Recipe successfully updated!', recipe: [@recipe] })
     end
   end
 
