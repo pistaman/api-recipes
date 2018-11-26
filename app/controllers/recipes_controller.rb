@@ -4,7 +4,7 @@ class RecipesController < ApplicationController
   def index
     @recipes = Recipe.all
     @recipes = { recipes: @recipes }
-    render json: response_fields(@recipes)
+    render json: @recipes.as_json(except: ['created_at','updated_at'])
   end
 
   def show
